@@ -2,11 +2,9 @@ import React from "react"
 import {useEffect, useState} from "react";
 import Post from "./Post";
 
-export default function PostList(props) {
+export default function PostList() {
     const [posts, setPosts] = useState([])
-    const [users, setUsers] = useState([])
     const [loadingPosts, setLoadingPosts] = useState(true)
-    const [loadingUsers, setLoadingUsers] = useState(true)
     useEffect(()=>{
         async function getPosts() {
             const response = await fetch("https://jsonplaceholder.typicode.com/posts")
@@ -16,6 +14,8 @@ export default function PostList(props) {
         getPosts()
         setLoadingPosts(false)
     },[])
+    const [users, setUsers] = useState([])
+    const [loadingUsers, setLoadingUsers] = useState(true)
     useEffect(()=>{
         async function getUsers() {
             const response = await fetch("https://jsonplaceholder.typicode.com/users")
